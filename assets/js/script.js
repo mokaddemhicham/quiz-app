@@ -95,6 +95,7 @@ function shuffleArray(array) {
 
 var numberList = [0, 1, 2, 3, 4, 5, 6, 7];
 var shuffledList = shuffleArray(numberList);
+var c__question;
 
 loadQuiz();
 
@@ -109,13 +110,14 @@ function loadQuiz(){
     submit.disabled = false;
     numberOfQuestions.innerHTML = `${++currentQuestion}/${questions.length}`;
     currentQuestion--;
-    console.log(currentQuestion + " => " + shuffledList[currentQuestion]);
-    question.innerHTML = questions[shuffledList[currentQuestion]].question;
+    //console.log(currentQuestion + " => " + c__question);
+    c__question = shuffledList[currentQuestion];
+    question.innerHTML = questions[c__question].question;
 
-    a_text.innerHTML = questions[shuffledList[currentQuestion]].a;
-    b_text.innerHTML = questions[shuffledList[currentQuestion]].b;
-    c_text.innerHTML = questions[shuffledList[currentQuestion]].c;
-    d_text.innerHTML = questions[shuffledList[currentQuestion]].d;
+    a_text.innerHTML = questions[c__question].a;
+    b_text.innerHTML = questions[c__question].b;
+    c_text.innerHTML = questions[c__question].c;
+    d_text.innerHTML = questions[c__question].d;
     secondes = 0;
     removeStyleFromLabels();
     cron = setInterval(() => { time(); checkTime();}, 10);
@@ -172,7 +174,7 @@ function checkAnswer(answer){
         });
         let label = el.id + '_text';
         
-        if(answer === questions[currentQuestion].correct){
+        if(answer === questions[c__question].correct){
             score++;
             document.getElementById(label).style.color = "green";
             document.getElementById(label).style.fontWeight = "bold";
@@ -182,8 +184,8 @@ function checkAnswer(answer){
             }, 2000);
         }else{
             document.getElementById(label).style.color = "red";
-            document.getElementById(questions[currentQuestion].correct+'_text').style.color = "green";
-            document.getElementById(questions[currentQuestion].correct+'_text').style.fontWeight = "bold";
+            document.getElementById(questions[c__question].correct+'_text').style.color = "green";
+            document.getElementById(questions[c__question].correct+'_text').style.fontWeight = "bold";
             wrongSound.play();
             setTimeout(()=>{
                 wrongSound.pause();
@@ -218,8 +220,8 @@ function checkTime(){
         clearInterval(cron);
         currentQuestion++;
         let c_question = currentQuestion - 1;
-        document.getElementById(questions[c_question].correct+'_text').style.color = "green";
-        document.getElementById(questions[c_question].correct+'_text').style.fontWeight = "bold";
+        document.getElementById(questions[shuffledList[c_question]].correct+'_text').style.color = "green";
+        document.getElementById(questions[shuffledList[c_question]].correct+'_text').style.fontWeight = "bold";
 
         if(currentQuestion < questions.length){
             setTimeout(loadQuiz, 2000);
