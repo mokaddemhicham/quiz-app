@@ -79,13 +79,25 @@ var question = document.getElementById("question"),
 // load quiz
 var currentQuestion = 0;
 var score = 0;
-var nameOfPlayer = localStorage.getItem("username");
+var nameOfPlayer = localStorage.getItem("username") ? localStorage.getItem("username") : "";
 var audio = document.getElementById('backgroundQuizMusic');
 var correctSound = document.getElementById('correctSound');
 var wrongSound = document.getElementById('wrongSound');
 var numberOfQuestions = document.getElementById('numberOfQuestions');
 
+
+function shuffleArray(array) {
+    return array.sort(function() {
+      return Math.random() - 0.5;
+    });
+  }
+  
+
+var numberList = [0, 1, 2, 3, 4, 5, 6, 7];
+var shuffledList = shuffleArray(numberList);
+
 loadQuiz();
+
 
 
 function loadQuiz(){
@@ -97,12 +109,13 @@ function loadQuiz(){
     submit.disabled = false;
     numberOfQuestions.innerHTML = `${++currentQuestion}/${questions.length}`;
     currentQuestion--;
-    question.innerHTML = questions[currentQuestion].question;
+    console.log(currentQuestion + " => " + shuffledList[currentQuestion]);
+    question.innerHTML = questions[shuffledList[currentQuestion]].question;
 
-    a_text.innerHTML = questions[currentQuestion].a;
-    b_text.innerHTML = questions[currentQuestion].b;
-    c_text.innerHTML = questions[currentQuestion].c;
-    d_text.innerHTML = questions[currentQuestion].d;
+    a_text.innerHTML = questions[shuffledList[currentQuestion]].a;
+    b_text.innerHTML = questions[shuffledList[currentQuestion]].b;
+    c_text.innerHTML = questions[shuffledList[currentQuestion]].c;
+    d_text.innerHTML = questions[shuffledList[currentQuestion]].d;
     secondes = 0;
     removeStyleFromLabels();
     cron = setInterval(() => { time(); checkTime();}, 10);
