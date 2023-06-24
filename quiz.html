@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="icon" type="image/png" href="assets/img/appicon.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/appicon.png" sizes="32x32">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit-icons.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <audio id="backgroundQuizMusic" src="/assets/music/2_05.mp3" loop></audio>
+    <audio id="correctSound" src="/assets/music/Correct.mp3" loop></audio>
+    <audio id="wrongSound" src="/assets/music/Wrong.mp3" loop></audio>
+    <div class="container">
+        <div class="box-questions">
+            <div class="numberOfQuestions">
+                <span id="numberOfQuestions"></span>
+            </div>
+            <div class="timer">
+                <span id="second">00</span>
+            </div>
+            <h2 id="question"></h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="a" class="answer">
+                    <label for="a" id="a_text" class="ans_label"></label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="b" class="answer">
+                    <label for="b" id="b_text" class="ans_label"></label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="c" class="answer">
+                    <label for="c" id="c_text" class="ans_label"></label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="d" class="answer">
+                    <label for="d" id="d_text" class="ans_label"></label>
+                </li>
+            </ul>
+        </div>
+        
+        <button type="button" id="submit" class="btnSend">Soumettre</button>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

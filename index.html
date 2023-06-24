@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="icon" type="image/png" href="/assets/img/appicon.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/assets/img/appicon.png" sizes="32x32">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit-icons.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <audio autoplay>
+                <source src="/assets/music/2_01.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+              </audio>
+              
+
+            
+                <form action="">
+                    <img src="assets/img/appicon.png" alt="" width="200" class="mb-4">
+                    <input type="text" name="name" class="form-control p-2" id="username" placeholder="Entrez votre nom" data-aos="fade-down">
+                    <div class="invalid-feedback">
+                        S'il vous plait entrez votre nom entier.
+                    </div>
+                    <button type="button" id="send" class="btn btn-primary p-2 mt-2" data-aos="fade-right">Commencer</button>
+                </form>
+        </div>
+    </div>
+    <script >
+        var sendBtn = document.getElementById("send");
+        sendBtn.addEventListener("click",function(){
+        var userName = document.getElementById("username");
+        if(userName.value !== ""){
+            location.replace("quiz.html");
+            localStorage.setItem("username", userName.value);
+        }else{
+            userName.classList.add("is-invalid");
+        }
+        });
+    AOS.init();
+    window.addEventListener('DOMContentLoaded', function() {
+        // Play the background music
+        var audio = document.getElementById('bgMusic');
+        audio.play();
+    });
+    </script>
+    
+</body>
+</html>
